@@ -1,6 +1,6 @@
 # 🌱 EcoNexus: Smart City Intelligence Platform
 
-![EcoNexus Dashboard Demo](./dashboard-demo.png)
+![EcoNexus Dashboard Demo]
 
 **EcoNexus** is a production-grade, mul<img width="1917" height="895" alt="Screenshot 2026-04-03 140017" src="https://github.com/user-attachments/assets/25093835-4d55-423d-b212-ed62238d259a" />
 ti-tenant enterprise dashboard designed for tracking, analyzing, and forecasting vital municipal resources—including Electricity, Water, WiFi Bandwidth, and Waste. Backed by a Machine Learning engine, it provides predictive analytics to ensure smarter, more sustainable city management.
