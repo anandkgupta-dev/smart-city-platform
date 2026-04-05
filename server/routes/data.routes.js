@@ -139,26 +139,39 @@ router.get('/predict/:type', async (req, res) => {
         const { type } = req.params;
         const data = await ResourceData.find({ user: req.user.id, type }).sort({ date: 1 });
         
-        // Linear regression expects consistent timeseries, aggregate by date.
-        const dailyAgg = {};
-        data.forEach(d => {
-             if(!dailyAgg[d.date]) dailyAgg[d.date] = 0;
-             dailyAgg[d.date] += d.value;
-        });
+        const departments = [...new Set(data.map(d => d.department))];
+        const predictions = {};
 
-        const sortedDates = Object.keys(dailyAgg).sort();
-        
-        if (sortedDates.length < 5) {
-             return res.json({ prediction: null, message: 'Not enough daily data for prediction' });
+        for (const dept of departments) {
+             const deptData = data.filter(d => d.department === dept);
+             
+             // Linear regression expects consistent timeseries, aggregate by date.
+             const dailyAgg = {};
+             deptData.forEach(d => {
+                  if(!dailyAgg[d.date]) dailyAgg[d.date] = 0;
+                  dailyAgg[d.date] += d.value;
+             });
+
+             const sortedDates = Object.keys(dailyAgg).sort();
+             
+             if (sortedDates.length < 5) {
+                  predictions[dept] = null;
+                  continue;
+             }
+
+             const mlData = sortedDates.map(date => ({ value: dailyAgg[date], date }));
+
+             try {
+                  const mlRes = await axios.post(`${process.env.ML_API_URL}/predict`, {
+                      data: mlData
+                  });
+                  predictions[dept] = mlRes.data.prediction;
+             } catch (mlErr) {
+                  predictions[dept] = null;
+             }
         }
 
-        const mlData = sortedDates.map(date => ({ value: dailyAgg[date], date }));
-
-        const mlRes = await axios.post(`${process.env.ML_API_URL}/predict`, {
-            data: mlData
-        });
-
-        res.json({ prediction: mlRes.data.prediction });
+        res.json({ predictions });
     } catch (error) {
         res.status(500).json({ message: 'Error predicting data' });
     }

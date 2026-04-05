@@ -28,15 +28,15 @@ const Dashboard = () => {
 
     const options = {
         responsive: true,
-        plugins: { legend: { labels: { color: '#475569', font: { family: 'sans-serif', weight: 'bold' } } } },
+        plugins: { legend: { labels: { color: '#a1a1aa', font: { family: 'Inter, sans-serif', weight: '600' } } } },
         scales: {
-            x: { grid: { color: '#f1f5f9' }, ticks: { color: '#64748b', font: { family: 'monospace' } } },
-            y: { grid: { color: '#f1f5f9' }, ticks: { color: '#64748b', font: { family: 'monospace' } } }
+            x: { grid: { color: 'rgba(255, 255, 255, 0.03)' }, ticks: { color: '#71717a', font: { family: 'Inter' } } },
+            y: { grid: { color: 'rgba(255, 255, 255, 0.03)' }, ticks: { color: '#71717a', font: { family: 'Inter' } } }
         }
     };
 
     if (!summary) {
-         return <div className="text-slate-500 font-mono tracking-widest uppercase p-8 flex items-center gap-3"><Zap className="animate-pulse text-emerald-500" size={18}/> Booting Analytics...</div>;
+         return <div className="text-zinc-500 font-mono tracking-widest uppercase p-8 flex items-center gap-3"><Zap className="animate-pulse text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]" size={18}/> Booting Analytics...</div>;
     }
 
     const { activeTypes, currentDay, weekly, fullData } = summary;
@@ -55,16 +55,16 @@ const Dashboard = () => {
 
     return (
         <div className="space-y-10 pb-10 max-w-7xl mx-auto">
-            <div className="flex justify-between items-center border-b border-slate-200 pb-6">
+            <div className="flex justify-between items-center border-b border-white/5 pb-6">
                 <div>
-                    <h1 className="text-3xl font-black text-slate-900 tracking-tight">EcoMetrics Dashboard</h1>
-                    <p className="text-emerald-600 mt-2 text-xs font-bold uppercase tracking-[0.2em]">Real-Time Sustainability Matrix</p>
+                    <h1 className="text-3xl font-black text-white tracking-tight drop-shadow-sm">EcoMetrics Dashboard</h1>
+                    <p className="text-emerald-400 mt-2 text-xs font-bold uppercase tracking-[0.2em] drop-shadow-[0_0_2px_rgba(52,211,153,0.8)]">Real-Time Sustainability Matrix</p>
                 </div>
                 
-                <div className="bg-white px-6 py-4 rounded-xl border border-slate-200 shadow-sm flex items-center gap-6">
+                <div className="bg-zinc-900/40 backdrop-blur-md px-6 py-4 rounded-xl border border-white/5 shadow-lg flex items-center gap-6">
                     <div className="text-right">
-                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1">Efficiency Ratio</p>
-                        <p className={`text-2xl font-black tracking-tighter ${sustainabilityScore > 75 ? 'text-emerald-600' : sustainabilityScore > 50 ? 'text-blue-600' : 'text-red-600'}`}>
+                        <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest mb-1">Efficiency Ratio</p>
+                        <p className={`text-2xl font-black tracking-tighter drop-shadow-md ${sustainabilityScore > 75 ? 'text-emerald-400' : sustainabilityScore > 50 ? 'text-blue-400' : 'text-red-400'}`}>
                              {activeTypes.length > 0 ? `${sustainabilityScore} / 100` : 'N/A'}
                         </p>
                     </div>
@@ -72,10 +72,10 @@ const Dashboard = () => {
             </div>
 
             {activeTypes.length === 0 && (
-                <div className="bg-white rounded-2xl p-12 border border-slate-200 text-center shadow-sm relative overflow-hidden">
-                    <Activity className="mx-auto text-emerald-200 mb-6 relative z-10" size={56} />
-                    <h3 className="text-xl text-slate-900 font-bold mb-3 uppercase tracking-widest relative z-10">Data Matrix Empty</h3>
-                    <p className="text-slate-500 max-w-lg mx-auto text-sm tracking-wide leading-relaxed relative z-10">
+                <div className="bg-zinc-900/40 backdrop-blur-md rounded-2xl p-12 border border-white/5 text-center shadow-lg relative overflow-hidden">
+                    <Activity className="mx-auto text-emerald-500/20 mb-6 relative z-10" size={56} />
+                    <h3 className="text-xl text-white font-bold mb-3 uppercase tracking-widest relative z-10">Data Matrix Empty</h3>
+                    <p className="text-zinc-400 max-w-lg mx-auto text-sm tracking-wide leading-relaxed relative z-10">
                         The analytical engine expects parameters. Select a sector on the tracking panel.
                     </p>
                 </div>
@@ -84,8 +84,8 @@ const Dashboard = () => {
             {activeTypes.length > 0 && (
                 <div className="space-y-10 pb-4">
                     <div>
-                        <h2 className="text-sm font-bold text-slate-900 mb-5 border-b border-slate-100 pb-3 uppercase tracking-widest flex items-center gap-3">
-                           <span className="w-2 h-2 rounded-full bg-blue-500"></span> Primary Cycle (Today)
+                        <h2 className="text-sm font-bold text-white mb-5 border-b border-white/5 pb-3 uppercase tracking-widest flex items-center gap-3">
+                           <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span> Primary Cycle (Today)
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {activeTypes.map(type => (
@@ -102,8 +102,8 @@ const Dashboard = () => {
                     </div>
 
                     <div className="pt-2">
-                        <h2 className="text-sm font-bold text-slate-900 mb-5 border-b border-slate-100 pb-3 uppercase tracking-widest flex items-center gap-3">
-                           <span className="w-2 h-2 rounded-full bg-emerald-500"></span> Trailing Sector (7 Days)
+                        <h2 className="text-sm font-bold text-white mb-5 border-b border-white/5 pb-3 uppercase tracking-widest flex items-center gap-3">
+                           <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span> Trailing Sector (7 Days)
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {activeTypes.map(type => (
@@ -146,13 +146,15 @@ const Dashboard = () => {
                                          return entries.reduce((sum, curr) => sum + curr.value, 0);
                                      }),
                                      borderColor: color,
-                                     backgroundColor: 'white',
+                                     backgroundColor: 'transparent',
                                      borderWidth: 2,
-                                     tension: 0.1,
-                                     fill: false,
-                                     pointBackgroundColor: 'white',
+                                     tension: 0.4,
+                                     fill: true,
+                                     pointBackgroundColor: '#0a0a0a',
                                      pointBorderColor: color,
-                                     pointBorderWidth: 2
+                                     pointBorderWidth: 2,
+                                     pointHoverBackgroundColor: color,
+                                     pointHoverBorderColor: 'white'
                                  };
                              })
                          };
@@ -168,18 +170,18 @@ const Dashboard = () => {
                          };
                          
                          return (
-                             <div key={type} className="space-y-6 pt-8 break-inside-avoid border-t border-slate-200">
-                                 <h2 className="text-xl font-black text-slate-900 capitalize tracking-tight flex items-center gap-3">
-                                     <span className="text-emerald-700 uppercase text-xs font-bold tracking-widest border border-emerald-200 bg-emerald-50 px-2 py-1 rounded-sm">Node {type}</span>
+                             <div key={type} className="space-y-6 pt-8 break-inside-avoid border-t border-white/5">
+                                 <h2 className="text-xl font-black text-white capitalize tracking-tight flex items-center gap-3">
+                                     <span className="text-emerald-400 uppercase text-xs font-bold tracking-widest border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 rounded-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">Node {type}</span>
                                      Analytics Detail
                                  </h2>
                                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                     <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
-                                         <h3 className="text-[10px] font-bold text-slate-500 mb-5 uppercase tracking-widest">Chronological Output</h3>
+                                     <div className="bg-zinc-900/40 backdrop-blur-md rounded-xl p-6 border border-white/5 shadow-lg">
+                                         <h3 className="text-[10px] font-bold text-zinc-500 mb-5 uppercase tracking-widest">Chronological Output</h3>
                                          <Line data={chartData} options={options} height={180} />
                                      </div>
-                                     <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
-                                         <h3 className="text-[10px] font-bold text-slate-500 mb-5 uppercase tracking-widest">Span Reporting</h3>
+                                     <div className="bg-zinc-900/40 backdrop-blur-md rounded-xl p-6 border border-white/5 shadow-lg">
+                                         <h3 className="text-[10px] font-bold text-zinc-500 mb-5 uppercase tracking-widest">Span Reporting</h3>
                                          <Bar data={barData} options={options} height={180} />
                                      </div>
                                  </div>
@@ -190,20 +192,20 @@ const Dashboard = () => {
 
                  <div className="space-y-6 pt-8 xl:pt-0">
                     {activeTypes.length > 0 && (
-                        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex flex-col h-full max-h-[550px] sticky top-28">
-                            <h3 className="text-xs font-bold text-slate-900 mb-5 uppercase tracking-[0.2em] flex items-center gap-3 border-b border-slate-100 pb-4">
-                                <span className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></span>
+                        <div className="bg-zinc-900/40 backdrop-blur-md rounded-xl p-6 border border-white/5 shadow-lg flex flex-col h-full max-h-[550px] sticky top-28">
+                            <h3 className="text-xs font-bold text-white mb-5 uppercase tracking-[0.2em] flex items-center gap-3 border-b border-white/5 pb-4">
+                                <span className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.8)] animate-pulse"></span>
                                 Live Telemetry Feed
                             </h3>
                             <div className="flex-1 overflow-y-auto space-y-3 pr-2 custom-scrollbar">
                                 {alerts.length === 0 ? (
-                                    <p className="text-slate-500 font-mono text-sm">Awaiting inputs...</p>
+                                    <p className="text-zinc-500 font-mono text-sm">Awaiting inputs...</p>
                                 ) : (
                                     alerts.map(alert => (
-                                        <div key={alert._id} className="bg-slate-50 border border-slate-100 p-4 rounded-lg relative overflow-hidden group">
-                                            <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
-                                            <p className="text-slate-800 text-sm font-medium leading-relaxed">{alert.message}</p>
-                                            <p className="text-[10px] text-slate-500 mt-2 font-mono uppercase tracking-widest">{new Date(alert.timestamp).toLocaleString()}</p>
+                                        <div key={alert._id} className="bg-black/20 border border-white/5 p-4 rounded-lg relative overflow-hidden group hover:bg-black/40 transition-colors">
+                                            <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                                            <p className="text-zinc-300 text-sm font-medium leading-relaxed">{alert.message}</p>
+                                            <p className="text-[10px] text-zinc-500 mt-2 font-mono uppercase tracking-widest">{new Date(alert.timestamp).toLocaleString()}</p>
                                         </div>
                                     ))
                                 )}

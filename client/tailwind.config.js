@@ -6,11 +6,14 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
       colors: {
-        background: '#0f172a',
-        card: '#1e293b',
-        primary: '#3b82f6',
-        secondary: '#10b981',
+        background: '#0a0a0a',
+        card: '#18181b',
+        primary: '#10b981',
+        secondary: '#0ea5e9',
       }
     },
   },
