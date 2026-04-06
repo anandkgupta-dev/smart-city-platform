@@ -3,7 +3,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import ResourcePage from './pages/ResourcePage';
+import EcoNexusDemo from './pages/EcoNexusDemo';
 import { Layout } from './components/Layout';
+import DemoLayout from './components/DemoLayout';
 import { AuthContext } from './context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
@@ -16,6 +18,12 @@ const App = () => {
     return (
         <Routes>
             <Route path="/login" element={<Auth />} />
+            
+            <Route path="/demo" element={
+                <DemoLayout>
+                    <EcoNexusDemo />
+                </DemoLayout>
+            } />
             
             <Route path="/dashboard" element={
                 <ProtectedRoute>

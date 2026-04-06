@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 fastapi
 uvicorn
 scikit-learn
 pydantic
 numpy
 pandas
+=======
+fastapi==0.110.0
+uvicorn==0.27.1
+scikit-learn==1.4.1.post1
+pydantic==2.6.4
+numpy==1.26.4
+pandas==2.2.1
+>>>>>>> ddc30ed (final clean code for deployment)

@@ -218,6 +218,7 @@ const ResourcePage = ({ type: propType }) => {
                             </h2>
                             <div className="flex-1 flex flex-col gap-3 overflow-y-auto pr-2">
                                 {uniqueDepartments.length > 0 ? uniqueDepartments.map(dept => (
+<<<<<<< HEAD
                                     <div key={dept} className="bg-black/20 border border-white/5 hover:border-emerald-500/30 hover:bg-black/40 shadow-inner rounded-xl p-4 flex items-center justify-between transition-all group/item">
                                         <span className="text-xs font-bold text-zinc-300 uppercase tracking-widest">{dept}</span>
                                         {predictions[dept] !== null && predictions[dept] !== undefined ? (
@@ -226,20 +227,40 @@ const ResourcePage = ({ type: propType }) => {
                                             </span>
                                         ) : (
                                             <span className="text-[10px] font-mono text-zinc-500 uppercase flex items-center gap-2">
+=======
+                                    <div key={dept} className="bg-slate-50 border border-slate-100 hover:border-emerald-200 hover:shadow-sm rounded-xl p-4 flex items-center justify-between transition-all">
+                                        <span className="text-xs font-bold text-slate-700 uppercase tracking-widest">{dept}</span>
+                                        {predictions[dept] !== null && predictions[dept] !== undefined ? (
+                                            <span className="text-lg font-black text-emerald-600 drop-shadow-sm">
+                                                {predictions[dept].toFixed(2)} <span className="text-[10px] text-slate-400 font-bold uppercase">{config.unit}</span>
+                                            </span>
+                                        ) : (
+                                            <span className="text-[10px] font-mono text-slate-400 uppercase flex items-center gap-2">
+>>>>>>> ddc30ed (final clean code for deployment)
                                                 <ShieldAlert size={12}/> Needs Min 5 Blocks
                                             </span>
                                         )}
                                     </div>
                                 )) : (
+<<<<<<< HEAD
                                     <div className="bg-white/5 p-5 border border-white/5 rounded-lg flex items-start gap-4">
                                         <ShieldAlert className="text-zinc-500 mt-0.5 shrink-0" size={20} />
                                         <p className="text-zinc-500 text-[10px] font-mono tracking-widest uppercase leading-loose">
+=======
+                                    <div className="bg-slate-50 p-5 border border-slate-200 rounded-lg flex items-start gap-4">
+                                        <ShieldAlert className="text-slate-400 mt-0.5 shrink-0" size={20} />
+                                        <p className="text-slate-500 text-[10px] font-mono tracking-widest uppercase leading-loose">
+>>>>>>> ddc30ed (final clean code for deployment)
                                             No blocks available to predict.
                                         </p>
                                     </div>
                                 )}
                             </div>
+<<<<<<< HEAD
                             <p className="text-zinc-500 text-[10px] font-mono uppercase mt-4 tracking-wider leading-relaxed border-l-2 border-emerald-500/30 pl-4">
+=======
+                            <p className="text-slate-500 text-[10px] font-mono uppercase mt-4 tracking-wider leading-relaxed border-l-2 border-emerald-500/30 pl-4">
+>>>>>>> ddc30ed (final clean code for deployment)
                                 Expected operational limit for subsequent cycle mapped by sector.
                             </p>
                         </div>

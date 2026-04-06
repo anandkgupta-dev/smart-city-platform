@@ -4,10 +4,14 @@
 
 @layer base {
   body {
+<<<<<<< HEAD
     @apply bg-[#050505] text-zinc-300 antialiased min-h-screen text-sm font-sans selection:bg-emerald-500/30 selection:text-emerald-200;
     /* Add a subtle dark mesh gradient */
     background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
                       radial-gradient(circle at 0% 50%, rgba(56, 189, 248, 0.03) 0%, transparent 50%);
+=======
+    @apply bg-background text-slate-300 antialiased min-h-screen text-sm font-sans transition-colors duration-300;
+>>>>>>> ddc30ed (final clean code for deployment)
   }
 }
 
@@ -18,9 +22,28 @@
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
+<<<<<<< HEAD
   background-color: #27272a;
+=======
+  background-color: rgba(255, 255, 255, 0.1);
+>>>>>>> ddc30ed (final clean code for deployment)
   border-radius: 20px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #3f3f46;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+  .glass-panel {
+    @apply bg-panel/70 backdrop-blur-lg border border-white/5;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-200;
+  }
+  .glow-effect:hover {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  }
 }
