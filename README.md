@@ -57,10 +57,11 @@ npm install
 ```
 **CRITICAL:** You must create a `.env` file in the `server` directory containing your secrets:
 ```env
-MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/smartcity
-JWT_SECRET=supersecretjwtkey
-ML_API_URL=http://127.0.0.1:8000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+ML_API_URL=http://localhost:8000
 PORT=5000
+
 ```
 Then start the server:
 ```bash
